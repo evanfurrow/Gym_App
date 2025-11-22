@@ -1,8 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" name=""viewport" content=""width=device-width, initial-scale="1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gym Lift Tracker - Log Lifts</title>
+    <style>
+        body {
+            /* Set a clean font and add space around the edges */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            padding: 20px;
+            margin: 0;
+            background-color: #f4f4f9; /* Light background for a clean look */
+            color: #333;
+        }
+
+        h1, h2 {
+            color: #007bff; /* Blue heading color */
+            margin-top: 1.5em;
+            text-align: center;
+        }
+
+        /* Style the link for a new session/logout */
+        a {
+            display: block;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #28a745; /* Green link color */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Style the form for readability on small screens */
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin: 0 auto;
+            max-width: 400px; /* Center the form and limit its width */
+        }
+
+        label {
+            display: block; /* Make labels stack above inputs */
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            /* Important for responsive design: box-sizing includes padding in the width */
+            box-sizing: border-box; 
+        }
+
+        button[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+
+        /* Style for the list of logged lifts */
+        ul {
+            list-style-type: none; /* Remove bullet points */
+            padding: 0;
+            margin: 20px auto;
+            max-width: 400px;
+        }
+
+        ul li {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            padding: 10px;
+            margin-bottom: 8px;
+            border-radius: 4px;
+            font-size: 0.95em;
+        }
+
+    </style>
 </head>
 <body>
     <h1>Log Lifts for {{ user_name }} on {{ workout_date | formatdate }}</h1>
